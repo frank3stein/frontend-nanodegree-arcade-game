@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<canvas id="c" width="1920" height="1018"></canvas>
+	<script	>
+		var c = document.querySelector("#c");
+		var ctx=c.getContext("2d");
+		
+
+
+
+		// New image on page load
+		var image=new Image();
+		image.onload=function(){
+			ctx.drawImage(image,0,0);
+			grayscale();
+		}
+		image.src="images/tree.jpg";
+
+		// Creating new Image Data
+		// var imgData=ctx.createImageData(500,500);
+
+
+
+
+		// Making the 10th pixel green
+		// for (var i=36;i<imgData.data.length;i+=40)
+  // 		{
+ 	// 		 imgData.data[i+0]=0;
+		//   	 imgData.data[i+1]=255;
+ 	// 		 imgData.data[i+2]=0;
+  // 			 imgData.data[i+3]=255;
+  // }
+  		
+  		function grayscale(){
+  			  		var gray;
+  			  		var imgData=ctx.getImageData(0,0,1920,1018);
+
+  			for (var i = 0; i < imgData.data.length; i+=4) {
+  		
+  				gray=imgData.data[i+0]*(0.3)+imgData.data[i+1]*(0.59)+imgData.data[i+2]*(0.11);
+  				imgData.data[i+0]=gray;
+  				imgData.data[i+1]=gray;
+  				imgData.data[i+2]=gray;
+  				
+  			}
+  		ctx.putImageData(imgData,0,0);
+  		}
+  	</script>
+</body>
+</html>
