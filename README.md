@@ -1,6 +1,9 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+This is a simple form of the game.
+The player can start by playing the game immediately by using either arrow
+keys on the keyboard or WASD keys.
 
-for self-checking their submission.
+Avoid the enemy bugs and try to reach the water. Once you reach the water you
+win the game.

@@ -150,6 +150,8 @@ var player=new Player;
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 // I modified it so it also includes wasd keys for gameplay.
+// Also changed the keyup to keydown to give player a faster
+// click.
 document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
