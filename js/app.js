@@ -1,22 +1,21 @@
-var Constants=new function() {
-    this.Objects={
-        ENEMY:{
-            start_x:-150,
-            start_y:[60,145,230,60,145,230],
-            width:101,
-            height:171,
-            speed:[200,300,400,250,350,450]
-        },
-        PLAYER:{
-            start_x:300,
-            start_y:400,
-            width:100,
-            height:85
-        }
+var Constants = {
+  Objects:{
+    ENEMY:{
+        start_x:-150,
+        start_y:[60,145,230,60,145,230],
+        width:101,
+        height:171,
+        speed:[200,300,400,250,350,450]
+    },
+    PLAYER:{
+        start_x:300,
+        start_y:400,
+        width:100,
+        height:85
     }
-}
-
-
+  }
+};
+var allEnemies=[];
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
@@ -37,13 +36,13 @@ var Enemy = function(x,y,speed) {
     this.y=getRandomWoutR(Constants.Objects.ENEMY.start_y);
     // Constants.Objects.ENEMY.start_y[Math.floor(Math.random()*Constants.Objects.ENEMY.start_y.length)];
     this.speed=getRandomWoutR(Constants.Objects.ENEMY.speed);
-}
+};
 
 // This function takes array as an input and picks a random element from it without replacement. So once picked an element cant be picked
 function getRandomWoutR(array){
   var randomIndex=Math.floor(Math.random()*array.length);
    return array.splice(randomIndex, 1)[0];
-};
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -60,12 +59,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -74,7 +73,7 @@ var Player =function(x,y){
     this.sprite="images/char-boy.png";
     this.x=Constants.Objects.PLAYER.start_x;
     this.y=Constants.Objects.PLAYER.start_y;
-}
+};
 
 // Collision function
 // First if the player reaches water -25y then the game resets
@@ -95,15 +94,15 @@ var Player =function(x,y){
         }
       }
 
-    }
+    };
     Player.prototype.reset=function(){
       this.x=Constants.Objects.PLAYER.start_x;
       this.y=Constants.Objects.PLAYER.start_y;
-    }
+    };
 
     Player.prototype.render= function(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
+    };
 
 
 // Arrow keys and wasd keys can be used to move the player, also boundary
@@ -123,25 +122,21 @@ var Player =function(x,y){
       else if(key=='down' &&  this.y<400 || key=='s'  &&  this.y<400){
         this.y+=Constants.Objects.PLAYER.height;
       }
-    }
+    };
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-var allEnemies=[];
-
-
 // Here New enemies are created till there are 7 enemies in total and pushed into the array allEnemies
 for (i=0;allEnemies.length<7;i++){
-  allEnemies.push(new Enemy);
-};
+  allEnemies.push(new Enemy());
+}
 
 
 
 // Here player and enemy sublass delegates its failed lookups to
-var player=new Player;
+var player=new Player();
 // var player= Object.create(Player.prototype);
 // var enemy=Object.create(Enemy.prototype);
 
