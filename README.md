@@ -1,7 +1,7 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-This is a simple form of the game.
+This is a simple frogger game.
 The player can start by playing the game immediately by using either arrow
 keys on the keyboard or WASD keys.
 
